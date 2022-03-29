@@ -31,8 +31,15 @@ public class EventController implements EventsApi {
     }
 
     @Override
-    public ResponseEntity<EventDto> getEvent(Long aLong) {
-        return ok(eventMapper.mapToDto(eventService.getEvent(aLong)));
+    public ResponseEntity<Void> deleteEvent(Long eventId) {
+
+        eventService.deleteEvent(eventId);
+        return ok(null);
+    }
+
+    @Override
+    public ResponseEntity<EventDto> getEvent(Long eventId) {
+        return ok(eventMapper.mapToDto(eventService.getEvent(eventId)));
     }
 
     @Override
