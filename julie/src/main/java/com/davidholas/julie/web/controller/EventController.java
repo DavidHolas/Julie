@@ -4,11 +4,11 @@ import com.davidholas.julie.service.EventServiceImpl;
 import com.davidholas.julie.web.mapping.EventMapper;
 import com.davidholas.julie_api.api.EventsApi;
 import com.davidholas.julie_api.models.EventDto;
-import com.davidholas.julie_api.models.InlineResponse200;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -43,7 +43,7 @@ public class EventController implements EventsApi {
     }
 
     @Override
-    public ResponseEntity<InlineResponse200> getEvents(@Valid Integer integer, @Valid Integer integer1) {
+    public ResponseEntity<List<EventDto>> getEvents(@Valid Integer integer, @Valid Integer integer1) {
         return null;
     }
 }
