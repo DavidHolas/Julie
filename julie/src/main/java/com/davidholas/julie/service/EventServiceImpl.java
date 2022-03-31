@@ -1,6 +1,7 @@
 package com.davidholas.julie.service;
 
 import com.davidholas.julie.persistence.model.Event;
+import com.davidholas.julie.persistence.model.enumerations.EventCategory;
 import com.davidholas.julie.persistence.repository.EventRepository;
 import com.davidholas.julie_api.models.EventDto;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,10 @@ public class EventServiceImpl {
 
     public Event getEvent(Long eventId) {
         return eventRepository.getById(eventId);
+    }
+
+    public List<Event> getEventsByCategory(String category) {
+        return eventRepository.findByCategory(category);
     }
 
     public Event createEvent(EventDto eventDto) {
