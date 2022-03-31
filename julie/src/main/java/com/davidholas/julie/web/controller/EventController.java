@@ -26,7 +26,7 @@ public class EventController implements EventsApi {
     }
 
     @Override
-    public ResponseEntity<EventDto> createEvent(EventDto eventDto) {
+    public ResponseEntity<EventDto> createEvent(@Valid EventDto eventDto) {
         return ok(eventMapper.mapToDto(eventService.createEvent(eventDto)));
     }
 
@@ -44,6 +44,6 @@ public class EventController implements EventsApi {
 
     @Override
     public ResponseEntity<List<EventDto>> getEvents(@Valid Integer integer, @Valid Integer integer1) {
-        return null;
+        return ok(eventMapper.mapToDtoList(eventService.getEvents()));
     }
 }

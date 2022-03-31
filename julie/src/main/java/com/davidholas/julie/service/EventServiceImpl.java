@@ -10,8 +10,6 @@ import java.util.List;
 @Service
 public class EventServiceImpl {
 
-    //private String TIME_FORMAT = "dd.mm.yyyy HH:mm";
-
     private EventRepository eventRepository;
 
     public EventServiceImpl(EventRepository eventRepository) {
@@ -30,7 +28,10 @@ public class EventServiceImpl {
 
         Event event = new Event();
         event.setCategory(eventDto.getCategory());
-        event.setTime(eventDto.getTime());
+
+        //TODO: vyřešit přenos času
+        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        //event.setTime(LocalDateTime.parse(eventDto.getTime(), formatter));
         event.setTitle(eventDto.getTitle());
         event.setDescription(eventDto.getDescription());
 

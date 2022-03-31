@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -21,7 +22,7 @@ public class Event {
     private String category;
 
     @Column(name = "time")
-    private String time;
+    private LocalDateTime time;
 
     @Column(name = "title")
     private String title;
