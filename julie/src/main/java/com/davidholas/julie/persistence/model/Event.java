@@ -1,6 +1,7 @@
 package com.davidholas.julie.persistence.model;
 
 import lombok.Data;
+import lombok.experimental.FieldNameConstants;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+@FieldNameConstants
 @Entity(name = "event")
 @Data
 public class Event {

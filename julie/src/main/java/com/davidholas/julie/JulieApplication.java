@@ -24,6 +24,7 @@ public class JulieApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/events").allowedOrigins("http://localhost:8090");
+				registry.addMapping("/events/**").allowedOrigins("http://localhost:8090");
 			}
 		};
 	}
