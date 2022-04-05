@@ -1,6 +1,7 @@
 package com.davidholas.julie;
 
 import com.davidholas.julie.config.JulieMapperConfig;
+import com.davidholas.julie.config.JulieSchedulerConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +10,8 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Import({
-		JulieMapperConfig.class
+		JulieMapperConfig.class,
+        JulieSchedulerConfig.class
 })
 @SpringBootApplication
 public class JulieApplication {
