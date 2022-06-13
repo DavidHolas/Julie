@@ -1,4 +1,4 @@
-package com.davidholas.julie.service;
+package com.davidholas.julie.service.Impl;
 
 import com.davidholas.julie.persistence.model.Event;
 import com.davidholas.julie.persistence.repository.EventRepository;

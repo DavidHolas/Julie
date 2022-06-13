@@ -2,7 +2,7 @@ package com.davidholas.julie.service;
 
 import com.davidholas.julie.persistence.model.Event;
 import com.davidholas.julie.persistence.model.enumerations.EventCategory;
-import com.davidholas.julie.persistence.repository.EventRepository;
+import com.davidholas.julie.service.Impl.EventServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.List;
 public class CronService {
 
     @Autowired
-    public EventServiceImpl eventService;
+    private EventServiceImpl eventService;
 
     @Scheduled(cron = "0 0 9 * * *")
     public void checkTodaysEvents() {

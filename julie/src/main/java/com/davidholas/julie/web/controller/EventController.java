@@ -1,6 +1,6 @@
 package com.davidholas.julie.web.controller;
 
-import com.davidholas.julie.service.EventServiceImpl;
+import com.davidholas.julie.service.Impl.EventServiceImpl;
 import com.davidholas.julie.web.mapping.EventMapper;
 import com.davidholas.julie_api.api.EventsApi;
 import com.davidholas.julie_api.models.EventDto;
