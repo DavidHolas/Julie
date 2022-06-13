@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static javax.persistence.GenerationType.*;
 
 @Data
@@ -26,4 +28,7 @@ public class Task {
 
     @Column(name = "completed")
     private Boolean completed;
+
+    @ManyToMany(mappedBy = "taskList")
+    List<Person> personList;
 }
