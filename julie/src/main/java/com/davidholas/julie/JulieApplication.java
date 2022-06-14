@@ -2,22 +2,31 @@ package com.davidholas.julie;
 
 import com.davidholas.julie.config.JulieMapperConfig;
 import com.davidholas.julie.config.JulieSchedulerConfig;
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import static org.springframework.boot.Banner.*;
+import static org.springframework.boot.Banner.Mode.*;
 
 @Import({
 		JulieMapperConfig.class,
         JulieSchedulerConfig.class
 })
 @SpringBootApplication
-public class JulieApplication {
+public class JulieApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JulieApplication.class, args);
+		new SpringApplicationBuilder(JulieApplication.class).bannerMode(OFF)
+				.build()
+				.run(args);
 	}
 
 	@Bean
@@ -27,8 +36,12 @@ public class JulieApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/events").allowedOrigins("http://localhost:8090");
 				registry.addMapping("/events/**").allowedOrigins("http://localhost:8090");
+				registry.addMapping("/persons").allowedOrigins("http://localhost:8090");
+				registry.addMapping("/persons/**").allowedOrigins("http://localhost:8090");
+				registry.addMapping("/tasks/**").allowedOrigins("http://localhost:8090");
+				registry.addMapping("/tasks/**").allowedOrigins("http://localhost:8090");
+
 			}
 		};
 	}
-
 }
