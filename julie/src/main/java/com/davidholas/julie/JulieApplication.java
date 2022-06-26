@@ -40,7 +40,6 @@ public class JulieApplication extends SpringBootServletInitializer {
 				registry.addMapping("/persons/**").allowedOrigins("http://localhost:8090");
 				registry.addMapping("/tasks/**").allowedOrigins("http://localhost:8090");
 				registry.addMapping("/tasks/**").allowedOrigins("http://localhost:8090");
-
 			}
 		};
 	}

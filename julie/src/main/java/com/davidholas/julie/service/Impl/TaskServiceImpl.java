@@ -1,12 +1,14 @@
 package com.davidholas.julie.service.Impl;
 
-import com.davidholas.julie.dto.TaskDto;
+import com.davidholas.julie.enums.TaskStateEnum;
 import com.davidholas.julie.persistence.model.Task;
 import com.davidholas.julie.persistence.repository.TaskRepository;
 import com.davidholas.julie.service.TaskService;
 import com.davidholas.julie.web.mapping.TaskMapper;
+import com.davidholas.julie_api.models.TaskDto;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -17,7 +19,7 @@ public class TaskServiceImpl implements TaskService {
     private TaskMapper taskMapper;
 
     public TaskServiceImpl(TaskRepository taskRepository,
-                           TaskMapper taskMapper) {
+                           TaskMapper taskMapper) { 
         this.taskRepository = taskRepository;
         this.taskMapper = taskMapper;
     }
@@ -28,13 +30,23 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public List<Task> getTasksForUser(Long personId) {
+        return taskRepository.findByPersonId(personId);
+    }
+
+    @Override
+    public List<Task> getTasksForDate(LocalDate date) {
+        return null;
+    }
+
+    @Override
     public Task getTask(Long taskId) {
         return taskRepository.getById(taskId);
     }
 
     @Override
-    public void createTask(TaskDto taskDto) {
-         taskRepository.save(taskMapper.mapToEntity(taskDto));
+    public Task createTask(TaskDto taskDto) {
+         return taskRepository.save(taskMapper.mapToEntity(taskDto));
     }
 
     @Override
@@ -43,8 +55,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void completeTask(Long taskId) {
-        taskRepository.completeTask(taskId);
+    public void updateTaskState(Long taskId) {
+        Task task = taskRepository.findById(taskId).get();
+
+        task.setTaskState(TaskStateEnum.COMPLETED.name());
+
+
     }
 
 }

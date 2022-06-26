@@ -1,7 +1,7 @@
 package com.davidholas.julie.web.mapping;
 
-import com.davidholas.julie.dto.TaskDto;
 import com.davidholas.julie.persistence.model.Task;
+import com.davidholas.julie_api.models.TaskDto;
 import org.mapstruct.Mapper;
 
 import java.util.List;

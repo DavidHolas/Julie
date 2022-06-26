@@ -18,14 +18,17 @@ public class Person {
     @Column(name = "id_person")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
 
     @Column(name = "gender")
     private Character gender;
 
     @Column(name = "birthdate")
-    private LocalDate birthdate;
+    private LocalDate birthDate;
 
     @ManyToMany(targetEntity = Task.class, cascade = { CascadeType.ALL })
     @JoinTable(name = "person_task",

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static javax.persistence.GenerationType.*;
@@ -26,8 +27,14 @@ public class Task {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "completed")
-    private Boolean completed;
+    @Column(name = "task_state")
+    private String taskState;
+
+    @Column(name = "time_due")
+    private LocalDateTime timeDue;
+
+    @Column(name = "personId")
+    private Long personId;
 
     @ManyToMany(mappedBy = "taskList")
     List<Person> personList;
