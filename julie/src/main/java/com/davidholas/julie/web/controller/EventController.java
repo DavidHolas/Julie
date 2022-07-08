@@ -16,7 +16,6 @@ import static org.springframework.http.ResponseEntity.ok;
 public class EventController implements EventsApi {
 
     private EventServiceImpl eventService;
-
     private EventMapper eventMapper;
 
     private EventController(EventServiceImpl eventService,
@@ -34,7 +33,7 @@ public class EventController implements EventsApi {
     public ResponseEntity<Void> deleteEvent(Long eventId) {
 
         eventService.deleteEvent(eventId);
-        return ok(null);
+        return ResponseEntity.noContent().build();
     }
 
     @Override
@@ -43,7 +42,7 @@ public class EventController implements EventsApi {
     }
 
     @Override
-    public ResponseEntity<List<EventDto>> getEvents(@Valid Integer integer, @Valid Integer integer1) {
+    public ResponseEntity<List<EventDto>> getEvents(@Valid Integer offset, @Valid Integer limit) {
         return ok(eventMapper.mapToDtoList(eventService.getEvents()));
     }
 }

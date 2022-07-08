@@ -1,7 +1,7 @@
 package com.davidholas.julie.service;
 
-import com.davidholas.julie.dto.PersonDto;
 import com.davidholas.julie.persistence.model.Person;
+import com.davidholas.julie_api.models.PersonDto;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public interface PersonService {
 
     List<Person> getPersons();
 
-    void createPerson(PersonDto personDto);
+    Person createPerson(Person person);
 
     void deletePerson(Long personId);
 }

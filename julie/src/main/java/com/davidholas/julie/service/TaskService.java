@@ -20,7 +20,7 @@ public interface TaskService {
 
     void deleteTask(Long taskId);
 
-    void updateTaskState(Long taskId);
+    void updateTaskState(Long taskId, Long taskStateId);
 
     //get all tasks DONE
     //get all tasks for user

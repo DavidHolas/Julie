@@ -1,10 +1,10 @@
 package com.davidholas.julie.service.Impl;
 
-import com.davidholas.julie.dto.PersonDto;
 import com.davidholas.julie.persistence.model.Person;
 import com.davidholas.julie.persistence.repository.PersonRepository;
 import com.davidholas.julie.service.PersonService;
 import com.davidholas.julie.web.mapping.PersonMapper;
+import com.davidholas.julie_api.models.PersonDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,12 +13,9 @@ import java.util.List;
 public class PersonServiceImpl implements PersonService {
 
     private PersonRepository personRepository;
-    private PersonMapper personMapper;
 
-    public PersonServiceImpl(PersonRepository personRepository,
-                             PersonMapper personMapper) {
+    public PersonServiceImpl(PersonRepository personRepository) {
         this.personRepository = personRepository;
-        this.personMapper = personMapper;
     }
 
     public List<Person> getPersons() {
@@ -31,8 +28,8 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void createPerson(PersonDto personDto) {
-        personRepository.save(personMapper.mapToEntity(personDto));
+    public Person createPerson(Person person) {
+        return personRepository.save(person);
     }
 
     @Override

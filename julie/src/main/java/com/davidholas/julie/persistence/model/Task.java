@@ -4,11 +4,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
 import java.time.LocalDateTime;
-import java.util.List;
 
-import static javax.persistence.GenerationType.*;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
 @NoArgsConstructor
@@ -27,15 +25,20 @@ public class Task {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "task_state")
-    private String taskState;
+    @Column(name = "task_state_id", insertable=false, updatable=false)
+    private Long taskStateId;
 
     @Column(name = "time_due")
     private LocalDateTime timeDue;
 
-    @Column(name = "personId")
+    @Column(name = "person_id", insertable=false, updatable=false)
     private Long personId;
 
-    @ManyToMany(mappedBy = "taskList")
-    List<Person> personList;
+    @OneToOne()
+    @JoinColumn(name = "task_state_id", referencedColumnName = "id_task_state")
+    private TaskState taskState;
+
+    @OneToOne()
+    @JoinColumn(name = "person_id", referencedColumnName = "id_person")
+    private Person person;
 }

@@ -55,10 +55,10 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void updateTaskState(Long taskId) {
+    public void updateTaskState(Long taskId, Long taskStateId) {
         Task task = taskRepository.findById(taskId).get();
 
-        task.setTaskState(TaskStateEnum.COMPLETED.name());
+        task.setTaskStateId(taskStateId);
 
 
     }

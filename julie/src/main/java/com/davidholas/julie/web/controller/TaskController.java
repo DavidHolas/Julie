@@ -1,5 +1,6 @@
 package com.davidholas.julie.web.controller;
 
+import com.davidholas.julie.persistence.model.Task;
 import com.davidholas.julie.service.TaskService;
 import com.davidholas.julie.web.mapping.TaskMapper;
 import com.davidholas.julie_api.api.TasksApi;
@@ -16,7 +17,6 @@ import static org.springframework.http.ResponseEntity.ok;
 public class TaskController implements TasksApi {
 
     private TaskService taskService;
-
     private TaskMapper taskMapper;
 
     public TaskController(TaskService taskService,
@@ -27,22 +27,31 @@ public class TaskController implements TasksApi {
 
     @Override
     public ResponseEntity<TaskDto> createTask(@Valid TaskDto taskDto) {
-        return ok(taskMapper.mapToDto(taskService.createTask(taskDto)));
+
+        Task task = taskService.createTask(taskDto);
+
+        return ok(taskMapper.mapToDto(task));
     }
 
     @Override
     public ResponseEntity<Void> deleteTask(Long taskId) {
+
         taskService.deleteTask(taskId);
+
         return ResponseEntity.noContent().build();
     }
 
     @Override
-    public ResponseEntity<TaskDto> getTask(Long aLong) {
-        return null;
+    public ResponseEntity<TaskDto> getTask(Long taskId) {
+
+        Task task = taskService.getTask(taskId);
+
+        return ok(taskMapper.mapToDto(task));
     }
 
     @Override
-    public ResponseEntity<List<TaskDto>> getTasks(@Valid Integer integer, @Valid Integer integer1) {
-        return null;
+    public ResponseEntity<List<TaskDto>> getTasks(@Valid Integer offset, @Valid Integer limit) {
+
+        return ok(taskMapper.mapToDtoList(taskService.getTasks()));
     }
 }

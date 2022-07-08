@@ -13,6 +13,7 @@ public class TaskState {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_task_state")
     private Long idTaskState;
 
     @Column(name = "code")
