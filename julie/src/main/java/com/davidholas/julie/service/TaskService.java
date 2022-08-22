@@ -20,6 +20,8 @@ public interface TaskService {
 
     void deleteTask(Long taskId);
 
+    Task completeTask(TaskDto taskDto);
+
     void updateTaskState(Long taskId, Long taskStateId);
 
     //get all tasks DONE

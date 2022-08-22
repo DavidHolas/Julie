@@ -26,6 +26,12 @@ public class TaskController implements TasksApi {
     }
 
     @Override
+    public ResponseEntity<TaskDto> completeTask(@Valid TaskDto taskDto) {
+        Task completedTask = taskService.completeTask(taskDto);
+        return ok(taskMapper.mapToDto(completedTask));
+    }
+
+    @Override
     public ResponseEntity<TaskDto> createTask(@Valid TaskDto taskDto) {
 
         Task task = taskService.createTask(taskDto);

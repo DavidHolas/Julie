@@ -14,7 +14,9 @@ CREATE TABLE task (
     description varchar(255),
     task_state_id bigint,
     person_id bigint,
-    time_due timestamp
+    task_type varchar(60),
+    time_due timestamp,
+    completed_at timestamp
 );
 
 CREATE TABLE task_state (
@@ -31,4 +33,15 @@ CREATE TABLE event (
 	time timestamp,
 	title varchar(60),
 	description varchar(255)
+);
+
+CREATE TABLE repeatable_task (
+    id_repeatable_task bigserial NOT NULL
+        CONSTRAINT repeatable_task_pkey PRIMARY KEY,
+    title varchar(60),
+    description varchar(255),
+    task_state_id bigint,
+    person_id bigint,
+    time_due timestamp,
+	frequency varchar(20)
 );

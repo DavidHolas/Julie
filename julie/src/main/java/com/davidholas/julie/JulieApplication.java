@@ -2,19 +2,15 @@ package com.davidholas.julie;
 
 import com.davidholas.julie.config.JulieMapperConfig;
 import com.davidholas.julie.config.JulieSchedulerConfig;
-import org.springframework.boot.Banner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import static org.springframework.boot.Banner.*;
-import static org.springframework.boot.Banner.Mode.*;
+import static org.springframework.boot.Banner.Mode.OFF;
 
 @Import({
 		JulieMapperConfig.class,
@@ -38,7 +34,7 @@ public class JulieApplication extends SpringBootServletInitializer {
 				registry.addMapping("/events/**").allowedOrigins("http://localhost:8090");
 				registry.addMapping("/persons").allowedOrigins("http://localhost:8090");
 				registry.addMapping("/persons/**").allowedOrigins("http://localhost:8090");
-				registry.addMapping("/tasks/**").allowedOrigins("http://localhost:8090");
+				registry.addMapping("/tasks").allowedOrigins("http://localhost:8090");
 				registry.addMapping("/tasks/**").allowedOrigins("http://localhost:8090");
 			}
 		};

@@ -1,11 +1,13 @@
 package com.davidholas.julie.persistence.model;
 
+import com.davidholas.julie.persistence.model.enumerations.TaskType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
@@ -34,11 +36,13 @@ public class Task {
     @Column(name = "person_id", insertable=false, updatable=false)
     private Long personId;
 
+    @Column(name= "completed_at")
+    private LocalDateTime completedAt;
+
+    @Enumerated(STRING)
+    private TaskType taskType;
+
     @OneToOne()
     @JoinColumn(name = "task_state_id", referencedColumnName = "id_task_state")
     private TaskState taskState;
-
-    @OneToOne()
-    @JoinColumn(name = "person_id", referencedColumnName = "id_person")
-    private Person person;
 }
